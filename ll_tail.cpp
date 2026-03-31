@@ -22,12 +22,11 @@ class linkedlist{
         }
         else{
             tail->next=newnode;
-            tail = tail->next;
+            tail = newnode;
         }
     }
-    int sizeofll(){
+    int sizeofll() const{
         node* temp = head;
-        if(temp == nullptr) return -1;
         int c=0;
         while(temp != nullptr){
             temp = temp->next;
@@ -35,16 +34,20 @@ class linkedlist{
         }
         return c;
     }
-    void display(){
+    void display() const{
+        if(head == nullptr){
+            cout<<"list is empty\n";
+            return;
+        }
         node* temp = head;
         if(temp == nullptr) return;
         while(temp != nullptr){
-            cout<<temp->data<<"->";
+            cout<<temp->data;
+            if(temp->next != nullptr) cout << " -> ";
             temp = temp->next;
         }
-        cout<<"END";
     }
-    int searchelement(int target){
+    int searchelement(int target) const{
         node* temp = head;
         int c=0;
         while(temp != nullptr){
